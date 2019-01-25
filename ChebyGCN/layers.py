@@ -74,7 +74,6 @@ class GraphConvolution(Layer):
         # Transform to Chebyshev basis
         x0 = tf.transpose(x, perm=[1, 2, 0])  # M x Fin x N
         x0 = tf.reshape(x0, [M, -1])  # M x Fin*N
-        print (K.int_shape(x0))
         x = tf.expand_dims(x0, 0)  # 1 x M x Fin*N
 
         def concat(x, x_):

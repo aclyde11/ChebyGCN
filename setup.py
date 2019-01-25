@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="ChebyGCN-austin-clyde",
-    version="0.0.1",
+    name="ChebyGCN-aclyde",
+    version="0.0.2",
     author="Austin Clyde",
     author_email="aclyde@uchicago.edu",
     description="Implements graph convolution keras layers based on Michaël Defferrard, Xavier Bresson, Pierre Vandergheynst, Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering, Neural Information Processing Systems (NIPS), 2016.",
