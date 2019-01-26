@@ -1,5 +1,5 @@
 ## Based on
-## Michael Defferrard, Xavier Bresson, Pierre Vandergheynst, Convolutional Neural Networks on Graphs with Fast Localized
+# Michael Defferrard, Xavier Bresson, Pierre Vandergheynst, Convolutional Neural Networks on Graphs with Fast Localized
 ## Spectral Filtering, Neural Information Processing Systems (NIPS), 2016.
 
 import tensorflow as tf
