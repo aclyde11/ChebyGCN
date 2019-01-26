@@ -95,7 +95,8 @@ class GraphConvolution(Layer):
         # Filter: Fin*Fout filters of order K_coeff, i.e. one filterbank per feature pair.
         #  W = self._weight_variable([Fin*K_coeff, Fout], regularization=False)
         x = tf.matmul(x, self.kernel)  # N*M x Fout
-        return tf.reshape(x, [-1, M, Fout])  # N x M x Fout
+        x = tf.reshape(x, [-1, M, Fout])  # N x M x Fout
+        return x
 
     def pool(self, x, p):
         """Max pooling of size p. Should be a power of 2."""
@@ -113,6 +114,7 @@ class GraphConvolution(Layer):
         x = self.chebyshev5(x, self.L, self.F_1, self.K)
         x = self.activation(x + self.bias)
         x = self.pool(x, self.p_1)
+        print x.get_shape()
         return x
 
     def compute_output_shape(self, input_shape):
