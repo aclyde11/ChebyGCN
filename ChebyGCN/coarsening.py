@@ -1,8 +1,8 @@
-### This file was taken from Michaël Defferrard's github
+### This file was taken from Michael Defferrard's github
 # here is the license on his code:
 # MIT License
 #
-# Copyright (c) 2016 Michaël Defferrard
+# Copyright (c) 2016 Michael Defferrard
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
