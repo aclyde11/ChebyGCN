@@ -52,8 +52,6 @@ class GraphConvolution(Layer):
                                         trainable=True)
         else:
             self.bias = self.add_weight(name='bias', shape=(1, 1, self.F_1), initializer='uniform', trainable=True)
-        print "OUTPUT: "
-        print (input_shape[0], self.M_0 / self.p_1, self.F_1)
         super(GraphConvolution, self).build(input_shape)  # Be sure to call this at the end
 
     def rescale_L(self, L, lmax=2):
@@ -114,7 +112,6 @@ class GraphConvolution(Layer):
         x = self.chebyshev5(x, self.L, self.F_1, self.K)
         x = self.activation(x + self.bias)
         x = self.pool(x, self.p_1)
-        print x.get_shape()
         return x
 
     def compute_output_shape(self, input_shape):
