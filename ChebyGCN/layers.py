@@ -114,4 +114,6 @@ class GraphConvolution(Layer):
         return x
 
     def compute_output_shape(self, input_shape):
+        print "OUTPUT: "
+        print (input_shape[0], self.M_0 / self.p_1, self.F_1)
         return (input_shape[0], self.M_0 / self.p_1, self.F_1)
