@@ -116,3 +116,35 @@ class GraphConvolution(Layer):
 
     def compute_output_shape(self, input_shape):
         return (input_shape[0], self.M_0 / self.p_1, self.F_1)
+
+class GraphPool(Layer):
+
+    def __init__(self, pooling, pool_type='max',  **kwargs):
+
+        self.p_1 = pooling
+        if pool_type == 'max':
+            self.poolf = tf.nn.max_pool
+        elif pool_type == 'average' or pool_type == 'avg':
+            self.poolf = tf.nn.avg_pool
+        else:
+            raise ValueError('pool_type not set to "max" or "avg"')
+
+        super(GraphPool, self).__init__(**kwargs)
+
+    def build(self, input_shape):
+        super(GraphPool, self).build(input_shape)  # Be sure to call this at the end
+
+    def pool(self, x, p):
+        """Max pooling of size p. Should be a power of 2."""
+        if p > 1:
+            x = tf.expand_dims(x, 3)  # N x M x F x 1
+            x = self.poolf(x, ksize=[1, p, 1, 1], strides=[1, p, 1, 1], padding='SAME')
+            return tf.squeeze(x, [3])  # N x M/p x F
+        else:
+            return x
+
+    def call(self, x):
+        return self.pool(x, self.p_1)
+
+    def compute_output_shape(self, input_shape):
+        return (input_shape[0], input_shape[1] / self.p_1)
